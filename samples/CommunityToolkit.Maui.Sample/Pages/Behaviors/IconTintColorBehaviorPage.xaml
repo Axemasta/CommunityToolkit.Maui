@@ -1,111 +1,130 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <pages:BasePage
-	x:Class="CommunityToolkit.Maui.Sample.Pages.Behaviors.IconTintColorBehaviorPage"
-	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-	xmlns:pages="clr-namespace:CommunityToolkit.Maui.Sample.Pages"
-	xmlns:vm="clr-namespace:CommunityToolkit.Maui.Sample.ViewModels.Behaviors"
-	Title="IconTintColorBehaviorPage"
-	x:DataType="vm:IconTintColorBehaviorViewModel"
-	x:TypeArguments="vm:IconTintColorBehaviorViewModel">
-	<ScrollView>
-		<Grid
-			Padding="20" 
-			ColumnDefinitions="*, *, *"
-			RowDefinitions="Auto, Auto, 60, Auto, 60, Auto"
-			RowSpacing="20">
+    x:Class="CommunityToolkit.Maui.Sample.Pages.Behaviors.IconTintColorBehaviorPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:pages="clr-namespace:CommunityToolkit.Maui.Sample.Pages"
+    xmlns:vm="clr-namespace:CommunityToolkit.Maui.Sample.ViewModels.Behaviors"
+    x:DataType="vm:IconTintColorBehaviorViewModel"
+    x:TypeArguments="vm:IconTintColorBehaviorViewModel"
+    Title="IconTintColorBehaviorPage">
 
-			<Label
-				Margin="0,0,0,20"
-				Text="With the IconTintColorBehavior you set the tint color of an image. This behavior works on the Image and ImageButton controls and is implemented for the Android, iOS, maccatalyst and Windows platforms."
-				LineBreakMode="WordWrap"
-				HorizontalTextAlignment="Center"
-				Grid.ColumnSpan="3"
-				Grid.Column="0"
-				Grid.Row="0"/>
+    <pages:BasePage.Resources>
+        <ResourceDictionary>
+            <LinearGradientBrush x:Key="Gradient" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Offset="0.0" Color="Red" />
+                <GradientStop Offset="1.0" Color="Lime" />
+            </LinearGradientBrush>
+        </ResourceDictionary>
+    </pages:BasePage.Resources>
 
-			<Label
-				Grid.Row="1"
-				Grid.ColumnSpan="3"
-				FontAttributes="Bold"
-				FontSize="18"
-				HorizontalTextAlignment="Center"
-				Text="Image control" />
+    <ScrollView>
+        <Grid
+            Padding="20"
+            ColumnDefinitions="*, *, *"
+            RowDefinitions="Auto, Auto, 60, Auto, 60, Auto"
+            RowSpacing="20">
 
-			<Image
-				Grid.Row="2"
-				Grid.Column="0"
-				Source="shield.png" />
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Margin="0,0,0,20"
+                HorizontalTextAlignment="Center"
+                LineBreakMode="WordWrap"
+                Text="With the IconTintColorBehavior you set the tint color of an image. This behavior works on the Image and ImageButton controls and is implemented for the Android, iOS, maccatalyst and Windows platforms." />
 
-			<Image
-				Grid.Row="2"
-				Grid.Column="1"
-				Source="shield.png">
-				<Image.Behaviors>
-					<mct:IconTintColorBehavior TintColor="Red" />
-				</Image.Behaviors>
-			</Image>
+            <Label
+                Grid.Row="1"
+                Grid.ColumnSpan="3"
+                FontAttributes="Bold"
+                FontSize="18"
+                HorizontalTextAlignment="Center"
+                Text="Image control" />
 
-			<Image
-				Grid.Row="2"
-				Grid.Column="2"
-				Source="shield.png">
-				<Image.Behaviors>
-					<mct:IconTintColorBehavior TintColor="Green" />
-				</Image.Behaviors>
-			</Image>
+            <Image
+                Grid.Row="2"
+                Grid.Column="0"
+                Source="shield.png" />
 
-			<Label
-				Grid.Column="0"
-				Grid.ColumnSpan="3"
-				Grid.Row="3"
-				Padding="0,20,0,0"
-				FontAttributes="Bold"
-				FontSize="18"
-				HorizontalTextAlignment="Center"
-				Text="ImageButton control" />
+            <Image
+                Grid.Row="2"
+                Grid.Column="1"
+                Source="shield.png">
+                <Image.Behaviors>
+                    <mct:IconTintColorBehavior TintColor="Red" />
+                </Image.Behaviors>
+            </Image>
 
-			<ImageButton
-				Grid.Row="4"
-				Grid.Column="0"
-				Source="shield.png" />
+            <Image
+                Grid.Row="2"
+                Grid.Column="2"
+                Source="shield.png">
+                <Image.Behaviors>
+                    <mct:IconTintColorBehavior TintGradient="{StaticResource Gradient}" />
+                </Image.Behaviors>
+            </Image>
+            <!--    -->
+            <!--  <Image  -->
+            <!--  Grid.Row="2"  -->
+            <!--  Grid.Column="2"  -->
+            <!--  Source="shield.png">  -->
+            <!--     <Image.Behaviors> -->
+            <!--         <mct:IconTintColorBehavior TintColor="Green" /> -->
+            <!--     </Image.Behaviors> -->
+            <!-- </Image> -->
 
-			<ImageButton
-				Grid.Row="4"
-				Grid.Column="1"
-				Command="{Binding ToggleImageButtonCommand, Mode=OneTime}"
-				Source="{Binding ToggleableImageSource}">
-				<ImageButton.Behaviors>
-					<mct:IconTintColorBehavior TintColor="Red" />
-				</ImageButton.Behaviors>
-			</ImageButton>
+            <Label
+                Grid.Row="3"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Padding="0,20,0,0"
+                FontAttributes="Bold"
+                FontSize="18"
+                HorizontalTextAlignment="Center"
+                Text="ImageButton control" />
 
-			<ImageButton
-				x:Name="ToggleColorImageButton"
-				Grid.Row="4"
-				Grid.Column="2"
-				Command="{Binding ChangeColorCommand}"
-				Source="shield.png">
-				<ImageButton.Behaviors>
-					<mct:IconTintColorBehavior TintColor="{Binding Source={x:Reference ToggleColorImageButton}, Path=BindingContext.ToggleableIconTintColor}" />
-				</ImageButton.Behaviors>
-			</ImageButton>
+            <ImageButton
+                Grid.Row="4"
+                Grid.Column="0"
+                Source="shield.png" />
 
-			<Label
-				Grid.Row="5"
-				Grid.Column="2"
-				FontSize="Micro"
-				FontAttributes="Italic"
-				Text="This ImageButton uses Bindings to change the TintColor. Click it!"/>
-			<Label
-				Grid.Row="5"
-				Grid.Column="1"
-				FontSize="Micro"
-				FontAttributes="Italic"
-				Text="This ImageButton uses Bindings to change the ImageSource. Click it!"/>
-		
-		</Grid>
-		
-	</ScrollView>
+            <ImageButton
+                Grid.Row="4"
+                Grid.Column="1"
+                Command="{Binding ToggleImageButtonCommand, Mode=OneTime}"
+                Source="{Binding ToggleableImageSource}">
+                <ImageButton.Behaviors>
+                    <mct:IconTintColorBehavior TintColor="Red" />
+                </ImageButton.Behaviors>
+            </ImageButton>
+
+            <ImageButton
+                x:Name="ToggleColorImageButton"
+                Grid.Row="4"
+                Grid.Column="2"
+                Command="{Binding ChangeColorCommand}"
+                Source="shield.png">
+                <ImageButton.Behaviors>
+                    <mct:IconTintColorBehavior TintColor="{Binding Source={x:Reference ToggleColorImageButton}, Path=BindingContext.ToggleableIconTintColor}" />
+                </ImageButton.Behaviors>
+            </ImageButton>
+
+            <Label
+                Grid.Row="5"
+                Grid.Column="2"
+                FontAttributes="Italic"
+                FontSize="Micro"
+                Text="This ImageButton uses Bindings to change the TintColor. Click it!" />
+            <Label
+                Grid.Row="5"
+                Grid.Column="1"
+                FontAttributes="Italic"
+                FontSize="Micro"
+                Text="This ImageButton uses Bindings to change the ImageSource. Click it!" />
+
+        </Grid>
+
+    </ScrollView>
 </pages:BasePage>
