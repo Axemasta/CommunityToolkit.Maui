@@ -12,10 +12,10 @@ public partial class IconTintColorBehavior : PlatformBehavior<View>
 		BindableProperty.Create(nameof(TintColor), typeof(Color), typeof(IconTintColorBehavior), default);
 	
 	/// <summary>
-	/// Attached Bindable Property for the <see cref="TintGradient"/>.
+	/// Attached Bindable Property for the <see cref="TintBrush"/>.
 	/// </summary>
-	public static readonly BindableProperty TintGradientProperty =
-		BindableProperty.Create(nameof(TintGradient), typeof(Brush), typeof(IconTintColorBehavior), default);
+	public static readonly BindableProperty TintBrushProperty =
+		BindableProperty.Create(nameof(TintBrush), typeof(Brush), typeof(IconTintColorBehavior), default);
 
 	/// <summary>
 	/// Property that represents the <see cref="Color"/> that Icon will be tinted.
@@ -29,9 +29,9 @@ public partial class IconTintColorBehavior : PlatformBehavior<View>
 	/// <summary>
 	/// Property that represents the <see cref="Brush"/> that Icon will be tinted.
 	/// </summary>
-	public Brush? TintGradient
+	public Brush? TintBrush
 	{
-		get => (Brush?)GetValue(TintGradientProperty);
-		set => SetValue(TintGradientProperty, value);
+		get => (Brush?)GetValue(TintBrushProperty);
+		set => SetValue(TintBrushProperty, value);
 	}
 }

@@ -18,9 +18,9 @@ public partial class IconTintColorBehavior
 			ApplyTintColor(platformView, bindable, TintColor);
 		}
 		
-		if (TintGradient is not null)
+		if (TintBrush is not null)
 		{
-			ApplyTintGradient(platformView, bindable, TintGradient);
+			ApplyTintGradient(platformView, bindable, TintBrush);
 		}
 
 		bindable.PropertyChanged += OnElementPropertyChanged;
@@ -31,9 +31,9 @@ public partial class IconTintColorBehavior
 				ApplyTintColor(platformView, bindable, TintColor);
 			}
 
-			if (e.PropertyName == TintGradientProperty.PropertyName)
+			if (e.PropertyName == TintBrushProperty.PropertyName)
 			{
-				ApplyTintGradient(platformView, bindable, TintGradient);
+				ApplyTintGradient(platformView, bindable, TintBrush);
 			}
 		};
 	}
@@ -164,6 +164,12 @@ public partial class IconTintColorBehavior
 			return;
 		}
 
+		if (brush is SolidColorBrush solidColorBrush)
+		{
+			SetUIImageViewTintColor(imageView, element, solidColorBrush.Color);
+			return;
+		}
+
 		var renderedImage = imageView.Image.RenderGradient(brush);
 
 		if (renderedImage is not null)
@@ -175,9 +181,7 @@ public partial class IconTintColorBehavior
 
 static class UIImageExtension
 {
-	const string backgroundLayer = "BackgroundLayer";
-	
-	internal static UIImage? RenderGradient(this UIImage image, UIColor[] colors)
+	internal static UIImage? RenderGradient(this UIImage image, Brush brush)
 	{
 		var source = image.ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate).CGImage;
 
@@ -186,44 +190,9 @@ static class UIImageExtension
 			return null;
 		}
 
-		var size = image.Size;
-
-		var cgColors = new CGColor[colors.Length];
-
-		for (int i = 0; i < colors.Length; i++)
+		if (brush is SolidColorBrush)
 		{
-			cgColors[i] = colors[i].CGColor; 
-		}
-		
-		var space = CGColorSpace.CreateDeviceRGB();
-
-		var gradient = new CGGradient(space, cgColors);
-
-		using var renderer = new UIGraphicsImageRenderer(size);
-		
-		var resultImage = renderer.CreateImage((context =>
-		{
-			var cgContext = context.CGContext;
-			cgContext.TranslateCTM(0, size.Height);
-			cgContext.ScaleCTM(1, -1);
-			
-			cgContext.SetBlendMode(CGBlendMode.Normal);
-
-			var rect = new CGRect(0, 0, size.Width, size.Height);
-			
-			cgContext.ClipToMask(rect, source);
-			cgContext.DrawLinearGradient(gradient, CGPoint.Empty, new CGPoint(0, size.Height), CGGradientDrawingOptions.DrawsAfterEndLocation);
-		}));
-
-		return resultImage;
-	}
-	
-	internal static UIImage? RenderGradient(this UIImage image, Brush brush)
-	{
-		var source = image.ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate).CGImage;
-
-		if (source is null)
-		{
+			// We can render a solid color without a gradient.
 			return null;
 		}
 
@@ -244,7 +213,25 @@ static class UIImageExtension
 			var rect = new CGRect(0, 0, size.Width, size.Height);
 			
 			cgContext.ClipToMask(rect, source);
-			cgContext.DrawLinearGradient(gradient, CGPoint.Empty, new CGPoint(0, size.Height), CGGradientDrawingOptions.DrawsAfterEndLocation);
+
+			if (brush is LinearGradientBrush linearGradientBrush)
+			{
+				// var orderedStops = linearGradientBrush.GradientStops.OrderBy(x => x.Offset).ToList();
+				// var locations = GetCAGradientLayerLocations(orderedStops);
+				
+				var p1 = linearGradientBrush.StartPoint;
+				var p2 = linearGradientBrush.EndPoint;
+
+				var startPoint = new CGPoint(p1.X * size.Width, p1.Y * size.Height);
+				var endPoint = new CGPoint(p2.X * size.Width, p2.Y * size.Height);
+				
+				// Currently gradient is flipped compared to brush, need a translation?
+				cgContext.DrawLinearGradient(gradient, startPoint, endPoint, CGGradientDrawingOptions.DrawsAfterEndLocation);
+			}
+			else
+			{
+				cgContext.DrawLinearGradient(gradient, CGPoint.Empty, new CGPoint(0, size.Height), CGGradientDrawingOptions.DrawsAfterEndLocation);	
+			}
 		}));
 
 		return resultImage;
