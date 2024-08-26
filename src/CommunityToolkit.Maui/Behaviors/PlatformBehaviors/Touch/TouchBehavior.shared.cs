@@ -139,7 +139,8 @@ public partial class TouchBehavior : BasePlatformBehavior<VisualElement>
 		nameof(DefaultBackgroundColor),
 		typeof(Color),
 		typeof(TouchBehavior),
-		TouchBehaviorDefaults.DefaultBackgroundColor);
+		TouchBehaviorDefaults.DefaultBackgroundColor,
+		propertyChanged: ForceUpdateState);
 
 	/// <summary>
 	/// Bindable property for <see cref="CurrentHoverState"/>
@@ -168,7 +169,8 @@ public partial class TouchBehavior : BasePlatformBehavior<VisualElement>
 		nameof(DefaultScale),
 		typeof(double),
 		typeof(TouchBehavior),
-		TouchBehaviorDefaults.DefaultScale);
+		TouchBehaviorDefaults.DefaultScale,
+		propertyChanged: ForceUpdateState);
 
 	/// <summary>
 	/// Bindable property for <see cref="PressedOpacity"/>
@@ -177,7 +179,8 @@ public partial class TouchBehavior : BasePlatformBehavior<VisualElement>
 		nameof(PressedOpacity),
 		typeof(double),
 		typeof(TouchBehavior),
-		TouchBehaviorDefaults.PressedOpacity);
+		TouchBehaviorDefaults.PressedOpacity,
+		propertyChanged: ForceUpdateState);
 
 	/// <summary>
 	/// Bindable property for <see cref="HoveredOpacity"/>
@@ -186,7 +189,8 @@ public partial class TouchBehavior : BasePlatformBehavior<VisualElement>
 		nameof(HoveredOpacity),
 		typeof(double),
 		typeof(TouchBehavior),
-		TouchBehaviorDefaults.HoveredOpacity);
+		TouchBehaviorDefaults.HoveredOpacity,
+		propertyChanged: ForceUpdateState);
 
 	/// <summary>
 	/// Bindable property for <see cref="DefaultOpacity"/>
@@ -195,7 +199,8 @@ public partial class TouchBehavior : BasePlatformBehavior<VisualElement>
 		nameof(DefaultOpacity),
 		typeof(double),
 		typeof(TouchBehavior),
-		TouchBehaviorDefaults.DefaultOpacity);
+		TouchBehaviorDefaults.DefaultOpacity,
+		propertyChanged: ForceUpdateState);
 
 	/// <summary>
 	/// Bindable property for <see cref="PressedScale"/>
@@ -204,7 +209,8 @@ public partial class TouchBehavior : BasePlatformBehavior<VisualElement>
 		nameof(PressedScale),
 		typeof(double),
 		typeof(TouchBehavior),
-		TouchBehaviorDefaults.PressedScale);
+		TouchBehaviorDefaults.PressedScale,
+		propertyChanged: ForceUpdateState);
 
 	/// <summary>
 	/// Bindable property for <see cref="HoveredScale"/>
@@ -213,7 +219,8 @@ public partial class TouchBehavior : BasePlatformBehavior<VisualElement>
 		nameof(HoveredScale),
 		typeof(double),
 		typeof(TouchBehavior),
-		TouchBehaviorDefaults.HoveredScale);
+		TouchBehaviorDefaults.HoveredScale,
+		propertyChanged: ForceUpdateState);
 
 	/// <summary>
 	/// Bindable property for <see cref="PressedBackgroundColor"/>
@@ -222,7 +229,8 @@ public partial class TouchBehavior : BasePlatformBehavior<VisualElement>
 		nameof(PressedBackgroundColor),
 		typeof(Color),
 		typeof(TouchBehavior),
-		TouchBehaviorDefaults.PressedBackgroundColor);
+		TouchBehaviorDefaults.PressedBackgroundColor,
+		propertyChanged: ForceUpdateState);
 
 	/// <summary>
 	/// Bindable property for <see cref="HoveredBackgroundColor"/>
@@ -231,7 +239,8 @@ public partial class TouchBehavior : BasePlatformBehavior<VisualElement>
 		nameof(HoveredBackgroundColor),
 		typeof(Color),
 		typeof(TouchBehavior),
-		TouchBehaviorDefaults.HoveredBackgroundColor);
+		TouchBehaviorDefaults.HoveredBackgroundColor,
+		propertyChanged: ForceUpdateState);
 
 	/// <summary>
 	/// Bindable property for <see cref="PressedTranslationX"/>
@@ -240,7 +249,8 @@ public partial class TouchBehavior : BasePlatformBehavior<VisualElement>
 		nameof(PressedTranslationX),
 		typeof(double),
 		typeof(TouchBehavior),
-		TouchBehaviorDefaults.PressedTranslationX);
+		TouchBehaviorDefaults.PressedTranslationX,
+		propertyChanged: ForceUpdateState);
 
 	/// <summary>
 	/// Bindable property for <see cref="HoveredTranslationX"/>
@@ -249,7 +259,8 @@ public partial class TouchBehavior : BasePlatformBehavior<VisualElement>
 		nameof(HoveredTranslationX),
 		typeof(double),
 		typeof(TouchBehavior),
-		TouchBehaviorDefaults.HoveredTranslationX);
+		TouchBehaviorDefaults.HoveredTranslationX,
+		propertyChanged: ForceUpdateState);
 
 	/// <summary>
 	/// Bindable property for <see cref="HoveredTranslationY"/>
@@ -258,7 +269,8 @@ public partial class TouchBehavior : BasePlatformBehavior<VisualElement>
 		nameof(HoveredTranslationY),
 		typeof(double),
 		typeof(TouchBehavior),
-		0.0);
+		0.0,
+		propertyChanged: ForceUpdateState);
 
 	/// <summary>
 	/// Bindable property for <see cref="DefaultTranslationX"/>
@@ -267,7 +279,8 @@ public partial class TouchBehavior : BasePlatformBehavior<VisualElement>
 		nameof(DefaultTranslationX),
 		typeof(double),
 		typeof(TouchBehavior),
-		TouchBehaviorDefaults.DefaultTranslationX);
+		TouchBehaviorDefaults.DefaultTranslationX,
+		propertyChanged: ForceUpdateState);
 
 	/// <summary>
 	/// Bindable property for <see cref="PressedRotationX"/>
@@ -276,7 +289,8 @@ public partial class TouchBehavior : BasePlatformBehavior<VisualElement>
 		nameof(PressedRotationX),
 		typeof(double),
 		typeof(TouchBehavior),
-		TouchBehaviorDefaults.PressedRotationX);
+		TouchBehaviorDefaults.PressedRotationX,
+		propertyChanged: ForceUpdateState);
 
 	/// <summary>
 	/// Bindable property for <see cref="HoveredRotationX"/>
@@ -285,7 +299,8 @@ public partial class TouchBehavior : BasePlatformBehavior<VisualElement>
 		nameof(HoveredRotationX),
 		typeof(double),
 		typeof(TouchBehavior),
-		TouchBehaviorDefaults.HoveredRotationX);
+		TouchBehaviorDefaults.HoveredRotationX,
+		propertyChanged: ForceUpdateState);
 
 	/// <summary>
 	/// Bindable property for <see cref="DefaultRotationX"/>
@@ -294,7 +309,8 @@ public partial class TouchBehavior : BasePlatformBehavior<VisualElement>
 		nameof(DefaultRotationX),
 		typeof(double),
 		typeof(TouchBehavior),
-		TouchBehaviorDefaults.DefaultRotationX);
+		TouchBehaviorDefaults.DefaultRotationX,
+		propertyChanged: ForceUpdateState);
 
 	/// <summary>
 	/// Bindable property for <see cref="PressedRotation"/>
@@ -303,7 +319,8 @@ public partial class TouchBehavior : BasePlatformBehavior<VisualElement>
 		nameof(PressedRotation),
 		typeof(double),
 		typeof(TouchBehavior),
-		TouchBehaviorDefaults.PressedRotation);
+		TouchBehaviorDefaults.PressedRotation,
+		propertyChanged: ForceUpdateState);
 
 	/// <summary>
 	/// Bindable property for <see cref="PressedRotationY"/>
@@ -312,7 +329,8 @@ public partial class TouchBehavior : BasePlatformBehavior<VisualElement>
 		nameof(PressedRotationY),
 		typeof(double),
 		typeof(TouchBehavior),
-		TouchBehaviorDefaults.PressedRotationY);
+		TouchBehaviorDefaults.PressedRotationY,
+		propertyChanged: ForceUpdateState);
 
 	/// <summary>
 	/// Bindable property for <see cref="DefaultRotationY"/>
@@ -321,7 +339,8 @@ public partial class TouchBehavior : BasePlatformBehavior<VisualElement>
 		nameof(DefaultRotationY),
 		typeof(double),
 		typeof(TouchBehavior),
-		TouchBehaviorDefaults.DefaultRotationY);
+		TouchBehaviorDefaults.DefaultRotationY,
+		propertyChanged: ForceUpdateState);
 
 	/// <summary>
 	/// Bindable property for <see cref="HoveredRotation"/>
@@ -330,7 +349,8 @@ public partial class TouchBehavior : BasePlatformBehavior<VisualElement>
 		nameof(HoveredRotation),
 		typeof(double),
 		typeof(TouchBehavior),
-		TouchBehaviorDefaults.HoveredRotation);
+		TouchBehaviorDefaults.HoveredRotation,
+		propertyChanged: ForceUpdateState);
 
 	/// <summary>
 	/// Bindable property for <see cref="DefaultRotation"/>
@@ -339,7 +359,8 @@ public partial class TouchBehavior : BasePlatformBehavior<VisualElement>
 		nameof(DefaultRotation),
 		typeof(double),
 		typeof(TouchBehavior),
-		TouchBehaviorDefaults.DefaultRotation);
+		TouchBehaviorDefaults.DefaultRotation,
+		propertyChanged: ForceUpdateState);
 
 	/// <summary>
 	/// Bindable property for <see cref="PressedTranslationY"/>
@@ -348,7 +369,8 @@ public partial class TouchBehavior : BasePlatformBehavior<VisualElement>
 		nameof(PressedTranslationY),
 		typeof(double),
 		typeof(TouchBehavior),
-		TouchBehaviorDefaults.PressedTranslationY);
+		TouchBehaviorDefaults.PressedTranslationY,
+		propertyChanged: ForceUpdateState);
 
 	/// <summary>
 	/// Bindable property for <see cref="HoveredAnimationEasing"/>
@@ -366,7 +388,8 @@ public partial class TouchBehavior : BasePlatformBehavior<VisualElement>
 		nameof(HoveredRotationY),
 		typeof(double),
 		typeof(TouchBehavior),
-		TouchBehaviorDefaults.HoveredRotationY);
+		TouchBehaviorDefaults.HoveredRotationY,
+		propertyChanged: ForceUpdateState);
 
 	/// <summary>
 	/// Bindable property for <see cref="DefaultTranslationY"/>
@@ -375,7 +398,8 @@ public partial class TouchBehavior : BasePlatformBehavior<VisualElement>
 		nameof(DefaultTranslationY),
 		typeof(double),
 		typeof(TouchBehavior),
-		TouchBehaviorDefaults.DefaultTranslationY);
+		TouchBehaviorDefaults.DefaultTranslationY,
+		propertyChanged: ForceUpdateState);
 
 	/// <summary>
 	/// Bindable property for <see cref="PressedAnimationDuration"/>
@@ -934,6 +958,21 @@ public partial class TouchBehavior : BasePlatformBehavior<VisualElement>
 				SetChildrenInputTransparent(ShouldMakeChildrenInputTransparent);
 				ForceUpdateState(CancellationToken.None, false).SafeFireAndForget<TaskCanceledException>(ex => Trace.WriteLine(ex));
 			}
+		}
+	}
+
+	/// <summary>
+	/// 
+	/// </summary>
+	public TouchBehavior()
+	{
+		if (Application.Current is not null)
+		{
+			Application.Current.RequestedThemeChanged += (sender, args) =>
+			{
+				Debug.WriteLine($"TouchBehavior - App Theme changed: {args.RequestedTheme}");
+				ForceUpdateState(CancellationToken.None).SafeFireAndForget();
+			};
 		}
 	}
 }

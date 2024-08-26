@@ -1,5 +1,7 @@
 ﻿using System.Diagnostics;
 using CommunityToolkit.Maui.Core;
+using CommunityToolkit.Maui.Extensions;
+
 namespace CommunityToolkit.Maui.Behaviors;
 
 public partial class TouchBehavior : IDisposable
@@ -49,7 +51,16 @@ public partial class TouchBehavior : IDisposable
 
 		weakEventManager.HandleEvent(element, new LongPressCompletedEventArgs(parameter), nameof(LongPressCompleted));
 	}
-
+	
+	internal static void ForceUpdateState(BindableObject bindable, object oldvalue, object newvalue)
+	{
+		if (bindable is TouchBehavior touchBehavior)
+		{
+			touchBehavior.ForceUpdateState(CancellationToken.None)
+				.SafeFireAndForget();
+		}
+	}
+	
 	internal async Task ForceUpdateState(CancellationToken token, bool animated = true)
 	{
 		if (Element is null)

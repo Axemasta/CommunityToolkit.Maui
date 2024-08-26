@@ -20,6 +20,19 @@
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="FontSize" Value="Large" />
             </Style>
+            
+            <mct:AppThemeColor
+                x:Key="CardBackgroundColor"
+                Dark="#2C2C2C"
+                Light="White" />
+            <mct:AppThemeColor
+                x:Key="CardHighlightColor"
+                Dark="#2762c2"
+                Light="#A4CF5B" />
+            <mct:AppThemeColor
+                x:Key="CardPressedBackgroundColor"
+                Dark="Black"
+                Light="LightGray" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -196,13 +209,13 @@
                 </Border>
             </VerticalStackLayout>
 
+            
             <VerticalStackLayout Spacing="{StaticResource SectionSpacing}">
                 <Label Style="{StaticResource SectionHeader}" Text="Input transparency for nested layouts" />
 
                 <Border
                     Margin="20"
                     Padding="20,10"
-                    BackgroundColor="Transparent"
                     StrokeShape="RoundRectangle, 10"
                     StrokeThickness="0">
                     <Border.Behaviors>
@@ -210,7 +223,10 @@
                             Command="{Binding IncreaseTouchCountCommand}"
                             DefaultAnimationDuration="150"
                             DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
-                            PressedBackgroundColor="LightGray"
+                            DefaultBackgroundColor="{AppThemeBinding Light='Blue',
+                                                      Dark='Red'}"
+                            PressedBackgroundColor="{AppThemeBinding Light='Lime',
+                                                                     Dark='Black'}"
                             PressedOpacity="0.8"
                             PressedScale="0.9" />
                     </Border.Behaviors>
@@ -219,7 +235,8 @@
                         ColumnDefinitions="Auto, *"
                         ColumnSpacing="10">
                         <Ellipse
-                            BackgroundColor="#A4CF5B"
+                            BackgroundColor="{AppThemeBinding Light='#A4CF5B',
+                                                              Dark='#2762c2'}"
                             HeightRequest="40"
                             WidthRequest="40" />
                         <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
